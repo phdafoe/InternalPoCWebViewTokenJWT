@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6D133BC2A03B36A00E79D58 /* ArranqueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D133BA2A03B36A00E79D58 /* ArranqueViewController.swift */; };
+		F6D133BD2A03B36A00E79D58 /* ArranqueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D133BB2A03B36A00E79D58 /* ArranqueViewController.xib */; };
+		F6D133BF2A03B37D00E79D58 /* ArranqueViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D133BE2A03B37D00E79D58 /* ArranqueViewCoordinator.swift */; };
 		F6D145E129D433280057AAAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D145E029D433280057AAAF /* AppDelegate.swift */; };
 		F6D145EA29D4332B0057AAAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6D145E929D4332B0057AAAF /* Assets.xcassets */; };
 		F6D145ED29D4332B0057AAAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6D145EB29D4332B0057AAAF /* LaunchScreen.storyboard */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F6D133BA2A03B36A00E79D58 /* ArranqueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArranqueViewController.swift; sourceTree = "<group>"; };
+		F6D133BB2A03B36A00E79D58 /* ArranqueViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArranqueViewController.xib; sourceTree = "<group>"; };
+		F6D133BE2A03B37D00E79D58 /* ArranqueViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArranqueViewCoordinator.swift; sourceTree = "<group>"; };
 		F6D145DD29D433280057AAAF /* InternalPoCWebViewTokenJWT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InternalPoCWebViewTokenJWT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D145E029D433280057AAAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6D145E929D4332B0057AAAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +49,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F6D133B82A03B32A00E79D58 /* PosicionGLobalView */ = {
+			isa = PBXGroup;
+			children = (
+				F6D145F529D43A640057AAAF /* DirectViewController.swift */,
+				F6D145F629D43A640057AAAF /* DirectViewController.xib */,
+				F6D145FD29D43E900057AAAF /* DirectViewControllerCoordinator.swift */,
+			);
+			path = PosicionGLobalView;
+			sourceTree = "<group>";
+		};
+		F6D133B92A03B33F00E79D58 /* ArranqueView */ = {
+			isa = PBXGroup;
+			children = (
+				F6D133BA2A03B36A00E79D58 /* ArranqueViewController.swift */,
+				F6D133BB2A03B36A00E79D58 /* ArranqueViewController.xib */,
+				F6D133BE2A03B37D00E79D58 /* ArranqueViewCoordinator.swift */,
+			);
+			path = ArranqueView;
+			sourceTree = "<group>";
+		};
 		F6D145D429D433280057AAAF = {
 			isa = PBXGroup;
 			children = (
@@ -77,9 +103,8 @@
 		F6D145F429D43A320057AAAF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F6D145F529D43A640057AAAF /* DirectViewController.swift */,
-				F6D145F629D43A640057AAAF /* DirectViewController.xib */,
-				F6D145FD29D43E900057AAAF /* DirectViewControllerCoordinator.swift */,
+				F6D133B92A03B33F00E79D58 /* ArranqueView */,
+				F6D133B82A03B32A00E79D58 /* PosicionGLobalView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6D145F829D43A640057AAAF /* DirectViewController.xib in Resources */,
+				F6D133BD2A03B36A00E79D58 /* ArranqueViewController.xib in Resources */,
 				F6D145ED29D4332B0057AAAF /* LaunchScreen.storyboard in Resources */,
 				F6D145EA29D4332B0057AAAF /* Assets.xcassets in Resources */,
 			);
@@ -180,10 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6D1460129D43F7C0057AAAF /* Utils.swift in Sources */,
+				F6D133BC2A03B36A00E79D58 /* ArranqueViewController.swift in Sources */,
 				F6D145FC29D43AAB0057AAAF /* AppInit.swift in Sources */,
 				F6D145E129D433280057AAAF /* AppDelegate.swift in Sources */,
 				F6D145FE29D43E900057AAAF /* DirectViewControllerCoordinator.swift in Sources */,
 				F6D145F729D43A640057AAAF /* DirectViewController.swift in Sources */,
+				F6D133BF2A03B37D00E79D58 /* ArranqueViewCoordinator.swift in Sources */,
 				F6D1460329D440AF0057AAAF /* Obfuscator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

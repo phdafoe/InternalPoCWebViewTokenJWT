@@ -12,7 +12,7 @@ class DirectViewController: UIViewController {
     
     // MARK: - Variables
     private var request : URLRequest {
-        let baseUrl = Utils.Constants.urlLab
+        let baseUrl = Utils.Constants.urlPRO
         let myURL = URL(string: baseUrl)!
         return URLRequest(url: myURL)
     }
@@ -65,6 +65,31 @@ class DirectViewController: UIViewController {
         }
     }
     
+    private func loadGlobalPosition() {
+        let baseUrl = Utils.Constants.urlposicionglobal
+        let myURL = URL(string: baseUrl)!
+        var myUrlRequest = URLRequest(url: myURL)
+        //urlRequest.allHTTPHeaderFields = ["Authorization": "Bearer \(tokenJWT)"]
+        //urlRequest.allHTTPHeaderFields = ["Content-Type": "application/json"]
+        //urlRequest.allHTTPHeaderFields = ["canal": "MIC4"]
+        myUrlRequest.httpMethod = "GET"
+        myUrlRequest.httpShouldHandleCookies = true
+        if let theWebView = myWebView {
+            DispatchQueue.main.async {
+                theWebView.load(myUrlRequest)
+            }
+        }
+    }
+    
+    private func showActivityIndicator(show: Bool) {
+        if show{
+            self.myActivityIndicator.isHidden = false
+            self.myActivityIndicator.startAnimating()
+        } else {
+            self.myActivityIndicator.isHidden = true
+            self.myActivityIndicator.stopAnimating()
+        }
+    }
 
 }
 
@@ -72,37 +97,49 @@ class DirectViewController: UIViewController {
 extension DirectViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        self.myActivityIndicator.isHidden = false
-        self.myActivityIndicator.startAnimating()
+        debugPrint("didStartProvisionalNavigation: ")
+        self.showActivityIndicator(show: true)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.myActivityIndicator.stopAnimating()
-        self.myActivityIndicator.isHidden = true
+        debugPrint("didFinish navigation: ")
+        self.showActivityIndicator(show: false)
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(.allow)
+        debugPrint("REQUEST NAVIGATION: "+(navigationAction.request.url?.absoluteString ?? ""))
+    }
+    
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationResponse: WKNavigationResponse,
+                 decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        decisionHandler(.allow)
+        debugPrint("RESPONSE: "+(navigationResponse.response.url?.absoluteString ?? ""))
+        
+        guard let NwLogin = navigationResponse.response.url?.absoluteString.contains("pagename=AppNWLogin") else { return }
+        
+        if NwLogin{
+            self.loadGlobalPosition()
+        }
+            
     }
 
     func webView(_ webView: WKWebView,
                  didReceive challenge: URLAuthenticationChallenge,
                  completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        
-        guard (webView.url?.host) != nil else {
+        guard let serverTrust = challenge.protectionSpace.serverTrust else {
+            completionHandler(.cancelAuthenticationChallenge, nil)
             return
         }
-        let authenticationMethod = challenge.protectionSpace.authenticationMethod
-        if authenticationMethod == NSURLAuthenticationMethodDefault || authenticationMethod == NSURLAuthenticationMethodHTTPBasic || authenticationMethod == NSURLAuthenticationMethodHTTPDigest {
-            let credential = URLCredential(user: Utils.Constants.username,
-                                           password: Utils.Constants.password,
-                                           persistence: .none)
-            completionHandler(.useCredential, credential)
-        } else if authenticationMethod == NSURLAuthenticationMethodServerTrust {
-            completionHandler(.performDefaultHandling, nil)
-        } else {
-            completionHandler(.cancelAuthenticationChallenge, nil)
+        DispatchQueue.main.async {
+            let exceptions = SecTrustCopyExceptions(serverTrust)
+            SecTrustSetExceptions(serverTrust, exceptions)
+            completionHandler(.useCredential, URLCredential(trust: serverTrust));
         }
+        
     }
     
 }

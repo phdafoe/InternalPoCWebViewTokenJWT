@@ -17,7 +17,7 @@ class AppInit: AppInitProtocol {
     var currentVC = UIViewController()
     
     func initApp(window: UIWindow) {
-        self.currentVC = DirectViewControllerCoordinator.view()
+        self.currentVC = ArranqueViewCoordinator.view()
         window.rootViewController = self.currentVC
         window.makeKeyAndVisible()
     }
