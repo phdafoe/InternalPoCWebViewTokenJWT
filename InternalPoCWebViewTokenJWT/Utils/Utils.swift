@@ -32,6 +32,7 @@ class Utils{
     struct Constants {
         // Url's PRO -> http://sfcdwcs01/ss/Satellite?d=&pagename=AppNWLogin&idCliente=022692392V&canal=WMO
         static let username = "022692392V"
+        static let usernameUint8:[UInt8] = [1,2,3,4,5,6,7,8,9,0]
         static let password = "Ao14022022"
         static let urlLab = "https://sfcdwcs01/ss/Satellite?d=&pagename=AppNWLogin&idCliente=09143714H&canal=APP"
         static let urlposicionglobal = "https://www.pass.carrefour.es/zona-cliente/posicion-global/?beta=true"

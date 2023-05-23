@@ -28,7 +28,8 @@ class DirectViewController: UIViewController {
         Utils.shared.clearCache()
         self.myActivityIndicator.isHidden = true
         //print(Obfuscator().bytesByObfuscatingString(string: Utils.Constants.tokenJWT))
-        // WebView + Delegate
+        // WebView + Delegate [1,2,3,4,5,6]
+        //Obfuscator().reveal(key: Utils.Constants.usernameUint8)
         
         
         let webConfiguration = WKWebViewConfiguration()
