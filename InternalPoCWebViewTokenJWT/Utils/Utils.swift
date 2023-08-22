@@ -34,11 +34,13 @@ class Utils{
         static let username = "022692392V"
         static let usernameUint8:[UInt8] = [1,2,3,4,5,6,7,8,9,0]
         static let password = "Ao14022022"
-        static let urlLab = "https://sfcdwcs01/ss/Satellite?d=&pagename=AppNWLogin&idCliente=09143714H&canal=APP"
-        static let urlposicionglobal = "https://www.pass.carrefour.es/zona-cliente/posicion-global/?beta=true"
+        static let urlZonaPublica = "https://sfc-digital-b2b-b2c-dev.npapps.gkesf.es.wcorp.carrefour.com/mic4-home/"
+        static let urlLibertoAnticiparPagos = "https://carrefourpagofacil.es/#/pay-process-direct/044P0d7r3s8g1j4q6i3U6W9C9Y4Y6g8Q3j7T7B6Z6u9OC"
+        static let urlAplazarCompras = "https://sfc-digital-b2b-b2c-pro.apps.gkesf.es.wcorp.carrefour.com/zona-cliente/configuracion/aplazar-compras?card=50071147722401"
+        static let urlposicionglobal = "http://sfc-digital-b2b-b2c-pro.apps.gkesf.es.wcorp.carrefour.com/zona-cliente/posicion-global"
         static let urlDirect = "https://www.dev-pass.carrefour.es/solicitar-dinero"
         static let urlPRO = "https://www.dev-pass.carrefour.es/cs/Satellite?d=&pagename=AppNWLogin&idCliente=09143714H&canal=APP"
-        static let tokenJWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlJFUTBNVVE1TjBOQ1JUSkVNemszTTBVMVJrTkRRMFUwUTBNMVJFRkJSamhETWpkRU5VRkJRZyJ9.eyJpc3MiOiJodHRwczovL2ZpZG0uZ2lneWEuY29tL2p3dC8zX3o3alBycDZNb3BoSUdGTmtVT3pDcnh6OXNWU2hfbGZpSWwtS09TZENTN1A1bTBsMVNiQmNlZ0VFRjdxQWtzU1gvIiwiYXBpS2V5IjoiM196N2pQcnA2TW9waElHRk5rVU96Q3J4ejlzVlNoX2xmaUlsLUtPU2RDUzdQNW0wbDFTYkJjZWdFRUY3cUFrc1NYIiwiaWF0IjoxNjg0NzcxNjg1LCJleHAiOjE2ODQ3NzE5ODUsInN1YiI6IjZmNjk0YmQwLWE5ZmMtNDAwNi05MzgzLTdmMTUyZTk5ZGEwNCIsInByb2ZpbGUudXNlcm5hbWUiOiIwOTE0MzcxNEgifQ.YkLLtUvzFB7k9Gd_JYlaBh_N_M-Rx2ZwJL4p_98zv8M8pTeiuHmbVkSg_b0QBwtN5sRUBOnPLDTqiH2D70o6tob8357aMawkba8FSVhqn55cgxwCKN6_HChfiGHjpytiYUfo3EJbTyUI-G0bChk5gnOutViGN1MAdZ77DMhbkspwqUwBdNy71rbZWCMS6Bqbqavh9D5wwoLzxSUZTc4Fu0wyvDtSRHrUmdQzQWKD6Mh5h18VvinOrL28_5gfEaLgZv0st9rDMAHTVo4ogJgNxv7z29HvL3W4F9zhvlASHrSd00it2ZVKeDdXINAZTilRgPqjxbGkCTdg_NB9sQnDdg"
+        static let tokenJWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlJFUTBNVVE1TjBOQ1JUSkVNemszTTBVMVJrTkRRMFUwUTBNMVJFRkJSamhETWpkRU5VRkJRZyJ9.eyJpc3MiOiJodHRwczovL2ZpZG0uZ2lneWEuY29tL2p3dC8zX3o3alBycDZNb3BoSUdGTmtVT3pDcnh6OXNWU2hfbGZpSWwtS09TZENTN1A1bTBsMVNiQmNlZ0VFRjdxQWtzU1gvIiwiYXBpS2V5IjoiM196N2pQcnA2TW9waElHRk5rVU96Q3J4ejlzVlNoX2xmaUlsLUtPU2RDUzdQNW0wbDFTYkJjZWdFRUY3cUFrc1NYIiwiaWF0IjoxNjkyMjAzMzIyLCJleHAiOjE2OTIyMDM2MjIsInN1YiI6IjZmNjk0YmQwLWE5ZmMtNDAwNi05MzgzLTdmMTUyZTk5ZGEwNCIsInByb2ZpbGUudXNlcm5hbWUiOiIwOTE0MzcxNEgifQ.bTYTGuSxXdcHOmEFHYItM_xmJWTttNd0oWLUfaup7YdDkSx_uN8_u79umHG6TjT_OS5YQwfVtjY6sWMOLIg_5bXzM_gqhMNR_rpvVDnwPSsj0QyUDo_kr1FoVax28iodpYz4IFU5LM4pdr0qizf_QXYn6vwEMNxoeO1wt9InmyeEjdna6R4CtzijqSSoULYiZWKybq7cU1dWLshL8dxeeCo22nikLgVDk8Mpw-5NObIkAcmbUqeNDdG2AzXTxZLpPDdonwWkvX_1_15NY5-sv4SL4GKKvIzWZni7_Vhvd9MTKcts2laB5dyh7abpfiD_7ep0euhjrNin8633bBgMxw"
     }
     
     func setupWebView(myWebViewContainer: UIView) -> WKWebView{

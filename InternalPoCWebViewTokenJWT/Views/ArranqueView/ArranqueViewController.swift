@@ -12,6 +12,7 @@ class ArranqueViewController: UIViewController {
     @IBAction func GoGlobalPsitionACTION(_ sender: UIButton) {
         let vc = DirectViewControllerCoordinator.view()
         vc.modalPresentationStyle = .formSheet
+        
         self.present(vc, animated: true)
     }
     
