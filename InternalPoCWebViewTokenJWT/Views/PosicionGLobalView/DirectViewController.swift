@@ -12,7 +12,7 @@ class DirectViewController: UIViewController {
     
     // MARK: - Variables
     private var request : URLRequest {
-        let baseUrl = Utils.Constants.urlZonaPublica
+        let baseUrl = Utils.Constants.urlDirect
         let myURL = URL(string: baseUrl)!
         return URLRequest(url: myURL)
     }
@@ -27,69 +27,28 @@ class DirectViewController: UIViewController {
         // Clear cache
         Utils.shared.clearCache()
         self.myActivityIndicator.isHidden = true
-        //print(Obfuscator().bytesByObfuscatingString(string: Utils.Constants.tokenJWT))
-        // WebView + Delegate [1,2,3,4,5,6]
-        //Obfuscator().reveal(key: Utils.Constants.usernameUint8)
-        
         
         let webConfiguration = WKWebViewConfiguration()
             webConfiguration.allowsInlineMediaPlayback = true
             webConfiguration.applicationNameForUserAgent = "Safari/605.1.15, canal:MIC4"
         
         self.myWebView = WKWebView(frame: containerView.frame, configuration: webConfiguration)
+    
+        self.containerView.addSubview(self.myWebView)
+        self.myWebView.translatesAutoresizingMaskIntoConstraints = false
         
-        var cookie: HTTPCookie?
+        //constrains for the webview to fit the containerView
+        let constraints = [
+            self.myWebView.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
+            self.myWebView.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor),
+            self.myWebView.widthAnchor.constraint(equalTo: self.containerView.widthAnchor),
+            self.myWebView.heightAnchor.constraint(equalTo: self.containerView.heightAnchor)
+        ]
         
-        if false{
-            cookie = HTTPCookie(properties: [
-                .domain: "www.pass.carrefour.es",
-                .path: "/",
-                .name: "jwtToken",
-                .value: "\(Utils.Constants.tokenJWT)",
-                .secure: "TRUE",
-                .expires: NSDate(timeIntervalSinceNow: 31556926),
-            ])!
-        } else {
-            cookie = HTTPCookie(properties: [
-                .domain: "http://sfc-digital-b2b-b2c-pro.apps.gkesf.es.wcorp.carrefour.com",
-                .path: "/",
-                .name: "jwtToken",
-                .value: "\(Utils.Constants.tokenJWT)",
-                .secure: "TRUE",
-                .expires: NSDate(timeIntervalSinceNow: 31556926),
-            ])!
-        }
-        
-        
-        
-        
-        self.myWebView.configuration.websiteDataStore.httpCookieStore.setCookie(cookie!) {
-            self.myWebView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
-
-                debugPrint("Cookies\(cookies)")
-
-                
-                self.containerView.addSubview(self.myWebView)
-                self.myWebView.translatesAutoresizingMaskIntoConstraints = false
-                
-                //constrains for the webview to fit the containerView
-                let constraints = [
-                    self.myWebView.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
-                    self.myWebView.centerYAnchor.constraint(equalTo: self.containerView.centerYAnchor),
-                    self.myWebView.widthAnchor.constraint(equalTo: self.containerView.widthAnchor),
-                    self.myWebView.heightAnchor.constraint(equalTo: self.containerView.heightAnchor)
-                ]
-                
-                //activate the constrains and load the url
-                NSLayoutConstraint.activate(constraints)
-                self.myWebView.navigationDelegate = self
-                self.loadWebView()
-                
-            }
-        }
-        
-        
-        
+        //activate the constrains and load the url
+        NSLayoutConstraint.activate(constraints)
+        self.myWebView.navigationDelegate = self
+        self.loadWebView()
     }
 
 
@@ -104,7 +63,8 @@ class DirectViewController: UIViewController {
             urlRequest.setValue("app", forHTTPHeaderField: "p_channel")
             urlRequest.setValue("logged", forHTTPHeaderField: "p_login_status")
             urlRequest.setValue("financial_services", forHTTPHeaderField: "p_site_business_unit")
-            debugPrint("URL_REQUEST_LOAD_WEBVIEW -> \(urlRequest.allHTTPHeaderFields)")
+            urlRequest.setValue("true", forHTTPHeaderField: "p_integrated")
+            urlRequest.setValue("jwtToken=\(Utils.Constants.tokenJWT)", forHTTPHeaderField: "Cookie")
             DispatchQueue.main.async {
                 theWebView.load(urlRequest)
             }
